@@ -24,9 +24,9 @@ pub struct KernelVersion {
     patch_number: i32,
 }
 
-impl TryFrom<String> for KernelVersion {
+impl TryFrom<&str> for KernelVersion {
     type Error = anyhow::Error;
-    fn try_from(version_string: String) -> Result<Self> {
+    fn try_from(version_string: &str) -> Result<Self> {
         let mut start_pos = 0;
         let mut kernel_version = 0;
         let mut major_revision = 0;
@@ -73,7 +73,7 @@ impl TryFrom<String> for KernelVersion {
 impl KernelVersion {
     pub fn current() -> Result<KernelVersion> {
         let str = get_current_kernel_version()?;
-        KernelVersion::try_from(str)
+        KernelVersion::try_from(str.as_str())
     }
 }
 
@@ -97,15 +97,15 @@ mod tests {
 
     #[test]
     fn test_kernel_version_ord_eq() {
-        let v1 = KernelVersion::try_from("3.10".to_owned()).unwrap();
-        let v2 = KernelVersion::try_from("3.10".to_owned()).unwrap();
+        let v1 = KernelVersion::try_from("3.10").unwrap();
+        let v2 = KernelVersion::try_from("3.10").unwrap();
         assert_eq!(v1, v2);
     }
 
     #[test]
     fn test_kernel_version_ord_lt() {
-        let v1 = KernelVersion::try_from("2.10".to_owned()).unwrap();
-        let v2 = KernelVersion::try_from("3.10".to_owned()).unwrap();
+        let v1 = KernelVersion::try_from("2.10").unwrap();
+        let v2 = KernelVersion::try_from("3.10").unwrap();
         assert_eq!(v1 < v2, true);
     }
 }
