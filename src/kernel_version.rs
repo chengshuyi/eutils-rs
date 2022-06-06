@@ -94,4 +94,18 @@ mod tests {
             KernelVersion::current()
         );
     }
+
+    #[test]
+    fn test_kernel_version_ord_eq() {
+        let v1 = KernelVersion::try_from("3.10".to_owned()).unwrap();
+        let v2 = KernelVersion::try_from("3.10".to_owned()).unwrap();
+        assert_eq!(v1, v2);
+    }
+
+    #[test]
+    fn test_kernel_version_ord_lt() {
+        let v1 = KernelVersion::try_from("2.10".to_owned()).unwrap();
+        let v2 = KernelVersion::try_from("3.10".to_owned()).unwrap();
+        assert_eq!(v1 < v2, true);
+    }
 }
