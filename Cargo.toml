@@ -1,7 +1,12 @@
 [package]
 name = "eutils-rs"
+description = "Commonly used toolsets"
+repository = "https://github.com/chengshuyi/eutils-rs"
+homepage = "https://github.com/chengshuyi/eutils-rs"
 version = "0.1.0"
 edition = "2021"
+authors = ["Shuyi Cheng <c15271843451@outlook.com>"]
+keywords = ["bpf", "ebpf", "ebpf utils"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
