@@ -22,3 +22,9 @@ See `examples/delay_distribution.rs` for more information.
 ### helpers
 
 * `bump_memlock_rlimit`
+
+
+### net
+
+* `ProtocolType`: Rust native proto type.
+* `TcpState`: Rust native tcp state.
