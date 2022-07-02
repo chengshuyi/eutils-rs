@@ -28,3 +28,9 @@ See `examples/delay_distribution.rs` for more information.
 
 * `ProtocolType`: Rust native proto type.
 * `TcpState`: Rust native tcp state.
+
+
+### proc/pid
+
+* proc/pid_fd
+* proc/pid_ns
