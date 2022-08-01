@@ -2,6 +2,13 @@ use anyhow::Result;
 use std::collections::HashSet;
 use std::fs::File;
 use std::io::{self, BufRead};
+use once_cell::sync::Lazy;
+use std::sync::Mutex;
+
+pub static GLOBAL_KAKKSYMS: Lazy<Mutex<Kallsyms>> = Lazy::new(|| {
+    let ksyms = Kallsyms::new();
+    Mutex::new(ksyms)
+});
 
 #[derive(Debug, Default)]
 pub struct Kallsyms {
