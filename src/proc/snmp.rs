@@ -6,7 +6,7 @@ use std::ops::Sub;
 use std::path::Path;
 use std::str::FromStr;
 
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct Snmp {
     hm: HashMap<(String, String), isize>,
 }
@@ -86,6 +86,15 @@ impl Snmp {
     pub fn lookup(&self, k: &(String, String)) -> Option<&isize> {
         self.hm.get(k)
     }
+
+    pub fn show_non_zero(&self) {
+        for (k, v) in &self.hm {
+            if *v != 0 {
+                print!("{}{}: {} ", k.0, k.1, v);
+            }
+        }
+        println!();
+    }
 }
 
 #[cfg(test)]
@@ -102,5 +111,13 @@ mod tests {
         let snmp1 = Snmp::from_file("/proc/net/snmp").unwrap();
         let snmp2 = Snmp::from_file("/proc/net/snmp").unwrap();
         let delta = snmp1 - snmp2;
+    }
+
+    #[test]
+    fn test_snmp_show_non_zero() {
+        let snmp1 = Snmp::from_file("/proc/net/snmp").unwrap();
+        let snmp2 = Snmp::from_file("/proc/net/snmp").unwrap();
+        let delta = snmp1 - snmp2;
+        delta.show_non_zero();
     }
 }
