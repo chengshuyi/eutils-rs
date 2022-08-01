@@ -12,7 +12,7 @@ fn main() {
             println!(
                 "{:?}: {:?}",
                 name.path(),
-                Pid::from_file(name.path()).unwrap()
+                Pid::from_file(name.path())
             );
         }
     }
