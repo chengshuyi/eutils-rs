@@ -2,6 +2,7 @@
 
 mod kallsyms;
 mod snmp;
+mod netstat;
 mod net_tcp;
 mod pid_fd;
 mod pid_ns;
