@@ -10,6 +10,7 @@ mod pid;
 pub use {
     self::kallsyms::Kallsyms,
     self::snmp::Snmp,
+    self::netstat::Netstat,
     self::net_tcp::NetTcp,
     self::pid_fd::PidFd,
     self::pid_ns::PidNs,
