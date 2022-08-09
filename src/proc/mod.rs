@@ -9,6 +9,7 @@ mod pid_ns;
 mod pid;
 pub use {
     self::kallsyms::Kallsyms,
+    self::kallsyms::GLOBAL_KALLSYMS,
     self::snmp::Snmp,
     self::netstat::Netstat,
     self::net_tcp::NetTcp,

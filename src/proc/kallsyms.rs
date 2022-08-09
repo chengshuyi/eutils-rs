@@ -5,7 +5,7 @@ use std::io::{self, BufRead};
 use once_cell::sync::Lazy;
 use std::sync::Mutex;
 
-pub static GLOBAL_KAKKSYMS: Lazy<Mutex<Kallsyms>> = Lazy::new(|| {
+pub static GLOBAL_KALLSYMS: Lazy<Mutex<Kallsyms>> = Lazy::new(|| {
     let ksyms = Kallsyms::new();
     Mutex::new(ksyms)
 });
