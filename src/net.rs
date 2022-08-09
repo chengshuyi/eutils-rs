@@ -5,7 +5,7 @@ pub enum ProtocolType {
     Icmp,
     Tcp,
     Udp,
-    Unknown,
+    Unknown(i32),
 }
 
 impl From<i32> for ProtocolType {
@@ -14,7 +14,7 @@ impl From<i32> for ProtocolType {
             libc::IPPROTO_ICMP => ProtocolType::Icmp,
             libc::IPPROTO_TCP => ProtocolType::Tcp,
             libc::IPPROTO_UDP => ProtocolType::Udp,
-            _ => ProtocolType::Unknown,
+            _ => ProtocolType::Unknown(value),
         }
     }
 }
